@@ -9,6 +9,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Comparator.comparing;
+
 public class StreamStudy {
 
     public static long countWords() throws IOException {
@@ -30,7 +32,7 @@ public class StreamStudy {
 
         words.stream()
                 .filter(x -> x.length() > 12)
-                .sorted((a,b) -> b.length() - a.length())
+                .sorted(comparing(String::length).reversed())
                 .distinct()
                 .limit(100)
                 .map(String::toLowerCase)
